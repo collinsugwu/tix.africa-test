@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :events
+  get 'home/index'
   root to: 'homes#index'
   devise_for :users, skip: [:sessions]
   as :user do
