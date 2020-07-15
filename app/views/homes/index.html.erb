@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Events</h1>
+<h2 class="pad">All Events</h2>
 
 <table class="table">
   <thead>
@@ -16,6 +16,7 @@
   </thead>
 
   <tbody>
+  <% if !@events.blank? %>
     <% @events.each do |event| %>
       <tr>
         <td><%= link_to event.title, event%></td>
@@ -33,6 +34,9 @@
         <%end%>
       </tr>
     <% end %>
+    <% else %>
+    No Events Yet
+  <%end%>
   </tbody>
 </table>
 <%= will_paginate @events %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
+<h4 class="pad">Events</h4>
 
 <table class="table">
   <thead>
@@ -16,7 +16,8 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+  <% if !@events.blank? %>
+  <% @events.each do |event| %>
       <tr>
         <td><%= link_to event.title, event%></td>
         <td><%= event.owner.name%></td>
@@ -33,6 +34,9 @@
         <%end%>
       </tr>
     <% end %>
+  <% else %>
+    No Events Yet
+  <%end%>
   </tbody>
 </table>
 
