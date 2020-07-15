@@ -1,0 +1,41 @@
+<%= form_for @event do |f| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control form-width' %>
+  </div>
+    <div class="field">
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, class: 'form-control form-width' %>
+  </div>
+  <div class="field">
+    <%= f.label :event_type %>
+    <%= f.select(:event_type, options_for_select([["Free", "free"], ["Paid", "paid"]]))%>
+  </div>
+
+  <div>
+  <div class="field">
+      <p>Select Dates to make event active</p>
+    <%= f.label :start_at %>
+    <%= f.datetime_select :start_at, :ampm => true, class: 'form-control' %>
+  </div>
+  <div class="field">
+      <%= f.label :end_at %>
+      <%= f.datetime_select :end_at, :ampm => true, class: 'form-control' %>
+  </div>
+  </div>
+
+    <div class="actions">
+      <%= f.submit "Create Event", class: "btn btn-primary rounded-0 mt-2" %>
+  </div>
+<% end %>

@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.pad {
+    padding-left: 20px;
+}
+
+.form-width {
+    width: 40%;
+}
