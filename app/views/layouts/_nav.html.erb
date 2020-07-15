@@ -12,9 +12,12 @@
         <li class="nav-item">
           <a class="nav-link" <%= link_to "Events", events_path %> </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" <%= link_to "New Events", new_event_path %> </a>
+        </li>
       </ul>
-      <% if current_user%>
-      <a class="nav-link" <%= link_to "Log out", destroy_user_session_path, method: :delete %></a>
+      <% if user_signed_in?%>
+     <a class="nav-link" <%= link_to "Log out", destroy_user_session_path, method: :delete %></a>
       <% else %>
       <a class="nav-link" <%= link_to "Sign up", new_user_path %></a>
       <a class="nav-link" <%= link_to "Sign in", new_user_session_path %></a>

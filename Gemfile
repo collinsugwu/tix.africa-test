@@ -60,3 +60,5 @@ gem 'friendly_id', '~> 5.2.4'
 
 # Devise is a flexible authentication solution for Rails based on Warden. It:
 gem 'devise'
+
+gem 'will_paginate', '~> 3.1.0'

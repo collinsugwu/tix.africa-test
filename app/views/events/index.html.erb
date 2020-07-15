@@ -2,24 +2,40 @@
 
 <h1>Events</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Title</th>
+      <th>Owner</th>
+      <th>Event Status</th>
+      <th>Event Type</th>
+      <th>show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
   </thead>
 
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to event.title, event%></td>
+        <td><%= event.owner.name%></td>
+        <%if active? event%>
+        <td>Active</td>
+        <%else%>
+        <td>InActive</td>
+        <%end%>
+        <td><%= event.event_type%></td>
+        <%if owner? event%>
+          <td><%= link_to 'Show', event %></td>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+        <%end%>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<%= will_paginate @events %>
 <%= link_to 'New Event', new_event_path %>
