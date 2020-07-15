@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="form-group">
   <%= f.label :title %>
-  <%= f.text_field :title, autofocus: true, autocomplete: "title" %>
+  <%= f.text_field :title, autofocus: true, autocomplete: "title", class: 'form-control form-width' %>
   </div>
     <div class="field">
     <%= f.label :description, 'Description' %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <%= f.text_area :description, class: 'form-control form-width' %>
   </div>
   <div class="field">
     <%= f.label :event_type %>
@@ -36,6 +36,6 @@
   </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Create Event", class: "btn btn-primary rounded-0 mt-2" %>
   </div>
 <% end %>
