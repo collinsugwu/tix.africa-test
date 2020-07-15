@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails'
 
 gem 'friendly_id', '~> 5.2.4'
+
+# Devise is a flexible authentication solution for Rails based on Warden. It:
+gem 'devise'
