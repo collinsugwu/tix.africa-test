@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-    user {
-        User.new(name: 'Ugwu Collins', email:'dev@gmail.com', password: '123456')
-    }
-    user.save
-    subject{Event.new(title: "In the light", 
-        discription: "What is the best way to support a football club", 
-        event_type: 'free', start_at: Time.now, end_at: Time.now)}
-    before { subject.save }
-
-    it 'title should be present' do
-        subject.title = nill
-        expect(subject).to_not be_valid
+    let(:event) { FactoryBot.build(:event) }
+  
+    describe 'association' do
+      it { belongs_to(:owner) }
     end
-end
+  
+    it 'is a valid event if it has all content' do
+      expect(event).to be_valid
+    end
+  
+    it 'is an invalid event if the title is empty' do
+      event.title = ''
+      expect(event).not_to be_valid
+    end
+  end
