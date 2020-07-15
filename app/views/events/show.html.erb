@@ -1,4 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<div class="card">
+  <div class="card-header">
+    Event Details
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @event.title%></h5>
+    <p class="card-text"><%= @event.description%></p>
+    
+    <h6>Owner:  <%= @event.owner.name%></h6>
+    <h6>Event Type:  <%= @event.owner.name%></h6>
+    <h6>Event Status:  <%= @event.owner.name%></h6>
+    <h6>Event Start Date:  <%= time_ago_in_words(@event.start_at)%></h6>
+    <h6>Event End Date:  <%= time_ago_in_words(@event.end_at)%></h6>
+  </div>
+</div>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

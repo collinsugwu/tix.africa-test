@@ -1,4 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>All Events</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Owner</th>
+      <th>Event Status</th>
+      <th>Event Type</th>
+      <th>show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.title, event%></td>
+        <td><%= event.owner.name%></td>
+        <%if active? event%>
+        <td>Active</td>
+        <%else%>
+        <td>InActive</td>
+        <%end%>
+        <td><%= event.event_type%></td>
+        <%if owner? event%>
+          <td><%= link_to 'Show', event %></td>
+          <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @events %>
